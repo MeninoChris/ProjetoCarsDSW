@@ -19,10 +19,14 @@ public class CreateCarServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        String jsonResponse = "{"
-        + "\"carName\":\"" + carName + "\","
-        + "\"message\":\"Carro Criado com Sucesso\""
-        + "}";
+        String jsonResponse;
+
+        // Tratamento de erros caso usuario nao digite nada
+        if(carName == null || carName.isEmpty()){
+            jsonResponse = "{ \"error\": \"Um Carro é requerido.\" }";
+        } else {
+            jsonResponse = "{ \"carName\": \"" + carName + "\", \"message\": \"Carro Criado Com Sucesso\" }";
+        }
 
         response.getWriter().write(jsonResponse);
 
@@ -31,6 +35,11 @@ public class CreateCarServlet extends HttpServlet {
         Em vez de redirecionar para a página HTML.
         Usando response.setContentType("application/json")
         E escrevi o JSON diretamente na resposta usando o response.getWriter().
+         */
+
+        /*
+        Pensei, e se o usuario nao digitar nada e apertar o botão para cadastrar?
+        Então adicionei uma verificação simples para ver se esta vazio ou não.
          */
     }
 }
