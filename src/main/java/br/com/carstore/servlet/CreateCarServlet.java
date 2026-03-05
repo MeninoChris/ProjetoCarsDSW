@@ -19,10 +19,18 @@ public class CreateCarServlet extends HttpServlet {
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        String json = "{ \"carName\": \"" + carName + "\", \"message\": \"Carro Criado com Sucesso\" }";
+        String jsonResponse = "{"
+        + "\"carName\":\"" + carName + "\","
+        + "\"message\":\"Carro Criado com Sucesso\""
+        + "}";
 
-        response.getWriter().write(json);
+        response.getWriter().write(jsonResponse);
 
+        /*
+        Alteração servlet para retornar um JSON.
+        Em vez de redirecionar para a página HTML.
+        Usando response.setContentType("application/json")
+        E escrevi o JSON diretamente na resposta usando o response.getWriter().
+         */
     }
-
 }
