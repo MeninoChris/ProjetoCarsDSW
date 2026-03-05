@@ -11,13 +11,17 @@ import java.io.IOException;
 public class CreateCarServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         String carName = request.getParameter("car-name");
 
-        System.out.println(carName);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
 
-        request.getRequestDispatcher("index.html").forward(request, response);
+        String json = "{ \"carName\": \"" + carName + "\", \"message\": \"Carro Criado com Sucesso\" }";
+
+        response.getWriter().write(json);
 
     }
 
