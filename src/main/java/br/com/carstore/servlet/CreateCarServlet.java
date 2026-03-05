@@ -11,7 +11,14 @@ import java.io.IOException;
 public class CreateCarServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String carName = request.getParameter("car-name");
+
+        System.out.println(carName);
+
+        request.getRequestDispatcher("index.html").forward(request, response);
+
     }
+
 }
